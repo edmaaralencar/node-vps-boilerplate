@@ -12,6 +12,7 @@ export async function helloWorld(app: FastifyInstance) {
         response: {
           200: z.object({
             success: z.boolean(),
+            teste: z.boolean(),
           }),
         },
       },
@@ -19,6 +20,7 @@ export async function helloWorld(app: FastifyInstance) {
     async (_, reply) => {
       reply.status(200).send({
         success: true,
+        teste: true,
       })
     },
   )
