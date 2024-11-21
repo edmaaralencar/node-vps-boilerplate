@@ -68,14 +68,22 @@ jobs:
           echo "GIT_COMMIT_HASH=${{ github.sha }}" >> .env
 
       - name: Deploy to vps
-        uses: appleboy/ssh-action@v1.2.0
+        uses: cssnr/stack-deploy-action@v1
         with:
-          debug: true
-          host: "edmaralencar.com.br"
-          username: "admin"
-          key: ${{ secrets.DEPLOY_SSH_KEY }}
-          port: 22
-          script: |
-            cd ${{ github.event.repository.name }}
-            git pull origin main
-            docker compose up -d --build
+          name: 'server'
+          file: 'docker-compose.yaml'
+          host: edmaralencar.com.br
+          user: admin
+          ssh_key: ${{ secrets.DEPLOY_SSH_KEY }}
+          env_file: './env'
+        # uses: appleboy/ssh-action@v1.2.0
+        # with:
+        #   debug: true
+        #   host: "edmaralencar.com.br"
+        #   username: "admin"
+        #   key: ${{ secrets.DEPLOY_SSH_KEY }}
+        #   port: 22
+        #   script: |
+        #     cd ${{ github.event.repository.name }}
+        #     git pull origin main
+        #     docker compose up -d --build
