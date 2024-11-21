@@ -26,10 +26,10 @@ services:
       - letsencrypt:/letsencrypt
       - /var/run/docker.sock:/var/run/docker.sock
   server:
-    # image: edmaralencar/boilerplate:latest
-    build:
-      context: .
-      dockerfile: Dockerfile
+    image: edmaralencar/boilerplate:${GIT_COMMIT_HASH}
+    # build:
+    #   context: .
+    #   dockerfile: Dockerfile
     labels:
       - "traefik.enable=true"
       - "traefik.http.middlewares.guestbook-ratelimit.ratelimit.average=20"
