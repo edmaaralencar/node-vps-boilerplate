@@ -69,8 +69,8 @@ jobs:
     - name: multiple command
       uses: appleboy/ssh-action@v1.2.0
       with:
-        host: edmaralencar.com.br
-        username: admin
+        host: "edmaralencar.com.br"
+        username: "admin"
         key: ${{ secrets.DEPLOY_SSH_KEY }}
         port: 22
         script: |
