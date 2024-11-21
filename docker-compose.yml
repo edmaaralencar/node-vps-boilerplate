@@ -53,8 +53,6 @@ services:
       mode: replicated
       replicas: 3
     restart: always
-    env_file:
-      - .env
 
 volumes:
   letsencrypt:
