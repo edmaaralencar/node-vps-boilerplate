@@ -50,6 +50,6 @@ app.register(fastifyCors)
 
 app.register(helloWorld)
 
-app.listen({ port: env.SERVER_PORT }).then(() => {
+app.listen({ port: env.SERVER_PORT, host: '0.0.0.0' }).then(() => {
   console.log(`HTTP server running on port ${env.SERVER_PORT}!`)
 })

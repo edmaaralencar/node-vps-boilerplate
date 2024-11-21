@@ -1,7 +1,7 @@
 import z from 'zod'
 
 const envSchema = z.object({
-  SERVER_PORT: z.number().default(4000),
+  SERVER_PORT: z.number().optional().default(8080),
 })
 
 const _env = envSchema.safeParse(process.env)
