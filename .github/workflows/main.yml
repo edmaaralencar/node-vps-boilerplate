@@ -69,10 +69,12 @@ jobs:
     - name: multiple command
       uses: appleboy/ssh-action@v1.2.0
       with:
+        debug: true
         host: "edmaralencar.com.br"
         username: "admin"
         key: ${{ secrets.DEPLOY_SSH_KEY }}
         port: 22
         script: |
-            whoami
-            ls -al
+            cd ${{ github.event.repository.name }}
+            ls
+            git pull origin main
