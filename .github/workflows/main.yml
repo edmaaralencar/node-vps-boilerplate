@@ -31,3 +31,25 @@ jobs:
                   file: ./Dockerfile
                   push: true
                   tags: ${{ secrets.DOCKERHUB_USERNAME }}/boilerplate:latest
+
+  deploy:
+    runs-on: ubuntu-latest
+    needs:
+      - build-and-push-image
+      - commit-hash
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
+    - name: create env file
+      run: |
+        echo "GIT_COMMIT_HASH=${{ github.sha }}" >> env
+    - name: 'Docker Stack Deploy'
+      uses: cssnr/stack-deploy-action@v1
+      with:
+        name: 'server'
+        file: 'docker-compose.yml'
+        host: edmaralencar.com.br
+        user: admin
+        ssh_key: ${{ secrets.DEPLOY_SSH_KEY }}
+        # env_file: './env'
