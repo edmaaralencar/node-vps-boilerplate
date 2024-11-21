@@ -64,7 +64,8 @@ jobs:
 
       - name: create env file
         run: |
-          echo "GIT_COMMIT_HASH=${{ github.sha }}" >> env
+          touch .env
+          echo "GIT_COMMIT_HASH=${{ github.sha }}" >> .env
 
       - name: Deploy to vps
         uses: appleboy/ssh-action@v1.2.0
