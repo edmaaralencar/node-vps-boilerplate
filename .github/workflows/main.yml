@@ -74,7 +74,6 @@ jobs:
           username: "admin"
           key: ${{ secrets.DEPLOY_SSH_KEY }}
           port: 22
-          env_file: './env'
           script: |
             cd ${{ github.event.repository.name }}
             git pull origin main
