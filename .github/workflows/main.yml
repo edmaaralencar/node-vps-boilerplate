@@ -57,6 +57,7 @@ jobs:
 
     needs:
       - build-and-push-image
+      - commit-hash
 
     steps:
       - name: Checkout code
@@ -64,8 +65,7 @@ jobs:
 
       - name: create env file
         run: |
-          touch .env
-          echo "GIT_COMMIT_HASH=${{ github.sha }}" >> .env
+          echo "GIT_COMMIT_HASH=${{ github.sha }}" >> env
 
       - name: Deploy to vps
         uses: cssnr/stack-deploy-action@v1
