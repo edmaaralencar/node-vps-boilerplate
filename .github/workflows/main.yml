@@ -71,7 +71,7 @@ jobs:
         uses: cssnr/stack-deploy-action@v1
         with:
           name: 'server'
-          file: 'docker-compose.yaml'
+          file: 'docker-compose.yml'
           host: edmaralencar.com.br
           user: admin
           ssh_key: ${{ secrets.DEPLOY_SSH_KEY }}
