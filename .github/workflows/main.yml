@@ -66,9 +66,9 @@ jobs:
     - name: 'Docker Stack Deploy'
       uses: cssnr/stack-deploy-action@v1
       with:
-        name: 'guestbook'
-        file: 'docker-stack.yaml'
-        host: zenful.cloud
-        user: deploytest
+        name: 'server'
+        file: 'docker-compose.yaml'
+        host: edmaralencar.com.br
+        user: admin
         ssh_key: ${{ secrets.DEPLOY_SSH_KEY }}
-        env_file: './env'
+        # env_file: './env'
